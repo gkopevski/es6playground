@@ -100,13 +100,19 @@ var classInheritanceFunction = function (name, location) {
 
 
 /**
- * ============================================================================== Object literals
+ * ============================================================================== Object literals   
  */
 
 
 /**
  * ============================================================================== Template strings and destructing
  */
+
+var templateStringFunction = function(){
+    var param1 = 'Marin', param2 = 'Stefi';
+    var exampleTemplateString = `This is an example string with passed parameters ${param1}, and ${param2}`;
+    console.log(exampleTemplateString);
+};
 
 
 /**
@@ -126,22 +132,22 @@ var run = function () {
 
 
     //================================ Arrow
-    // arrowlessFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
-    // arrowFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
+    arrowlessFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
+    arrowFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
 
 
     //================================ Class
-    // classExampleFunction('Endava');
-    // classInheritanceFunction('Endava','Skopje');
+    classExampleFunction('Endava');
+    classInheritanceFunction('Endava','Skopje');
 
 
     //================================ Object literals
 
 
-    //================================ Object literals
+    //================================ Template strings and destructing
+    templateStringFunction();
 
-
-    //================================ Object literals
+    //================================ Module import and export
     moduleImportUsageExample();
 
 };
