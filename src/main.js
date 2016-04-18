@@ -100,15 +100,48 @@ var classInheritanceFunction = function (name, location) {
 
 
 /**
- * ============================================================================== Object literals   
+ * ============================================================================== Object literals
  */
+
+var objectLiteralFunction = function () {
+
+    var handler = function () {
+        console.log('example function on the fly evaluation in object literal');
+    };
+    function theProtoObj(){};
+
+    theProtoObj.prototype.toStringConstant = function () {
+        console.log('PI number is ' + 3.14);
+    };
+
+    theProtoObj.prototype.toString = function(){
+        return 'toString prototype invoked';
+    };
+
+    var obj = {
+        // __proto__
+        __proto__: theProtoObj,
+        // Shorthand for ‘handler: handler’
+        handler,
+        // Methods
+        toString() {
+            return "d " + this.__proto__.prototype.toString();
+        },
+        // Computed (dynamic) property names
+        [ 'prop_' + (() => 42)() ]: 42
+    };
+
+    console.log(obj.toString() + ' with handler ' + obj.handler() + ' with prototype writing ' + obj.prototype.toStringConstant());
+
+
+};
 
 
 /**
  * ============================================================================== Template strings and destructing
  */
 
-var templateStringFunction = function(){
+var templateStringFunction = function () {
     var param1 = 'Marin', param2 = 'Stefi';
     var exampleTemplateString = `This is an example string with passed parameters ${param1}, and ${param2}`;
     console.log(exampleTemplateString);
@@ -132,17 +165,17 @@ var run = function () {
 
 
     //================================ Arrow
-    arrowlessFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
-    arrowFunction(['Goran','Aleksandar', 'Filip', 'Eka']);
+    arrowlessFunction(['Goran', 'Aleksandar', 'Filip', 'Eka']);
+    arrowFunction(['Goran', 'Aleksandar', 'Filip', 'Eka']);
 
 
     //================================ Class
     classExampleFunction('Endava');
-    classInheritanceFunction('Endava','Skopje');
+    classInheritanceFunction('Endava', 'Skopje');
 
 
     //================================ Object literals
-
+    objectLiteralFunction();
 
     //================================ Template strings and destructing
     templateStringFunction();
